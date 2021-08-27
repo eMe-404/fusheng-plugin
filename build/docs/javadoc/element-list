@@ -1,0 +1,8 @@
+com.thoughtworks.fusheng
+com.thoughtworks.fusheng.config
+com.thoughtworks.fusheng.dojo
+com.thoughtworks.fusheng.exception
+com.thoughtworks.fusheng.outbound
+com.thoughtworks.fusheng.repository
+com.thoughtworks.fusheng.tasks
+com.thoughtworks.fusheng.util

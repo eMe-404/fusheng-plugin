@@ -1,0 +1,90 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.fusheng.gradle.plugins",
+    "module": "plugin",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "plugin-1.0.0.jar",
+          "url": "plugin-1.0.0.jar",
+          "size": 12834179,
+          "sha512": "5fa6a894d756a2c40dd11f5cc0d61a122dfa55a7d52e053ed889da57968670fb5b8952acecacf18d6be7980c20413a8831a75d2f575d32d3727f9006eb8b471f",
+          "sha256": "f5445c1e08b37e3cbedcaf3c1be373ad91d0027057700cbe0ddc0792b9b9a1d6",
+          "sha1": "5192d2d62315f90a6a2dc572060e72ca36f2dab7",
+          "md5": "6735f265e3a5a5338adae9c785f0b4fb"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.apache.commons",
+          "module": "commons-lang3",
+          "version": {
+            "requires": "3.12.0"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-io",
+          "version": {
+            "requires": "1.3.2"
+          }
+        },
+        {
+          "group": "org.testng",
+          "module": "testng",
+          "version": {
+            "requires": "7.1.0"
+          }
+        },
+        {
+          "group": "org.springframework",
+          "module": "spring-web",
+          "version": {
+            "requires": "5.3.9"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "plugin-1.0.0.jar",
+          "url": "plugin-1.0.0.jar",
+          "size": 12834179,
+          "sha512": "5fa6a894d756a2c40dd11f5cc0d61a122dfa55a7d52e053ed889da57968670fb5b8952acecacf18d6be7980c20413a8831a75d2f575d32d3727f9006eb8b471f",
+          "sha256": "f5445c1e08b37e3cbedcaf3c1be373ad91d0027057700cbe0ddc0792b9b9a1d6",
+          "sha1": "5192d2d62315f90a6a2dc572060e72ca36f2dab7",
+          "md5": "6735f265e3a5a5338adae9c785f0b4fb"
+        }
+      ]
+    }
+  ]
+}

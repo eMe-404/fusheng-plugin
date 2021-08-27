@@ -1,0 +1,108 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.15.0'
+}
+
+group = 'com.github.vincentx'
+version = '1.0.0'
+sourceCompatibility = '11'
+archivesBaseName = 'fusheng'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
+    implementation 'org.testng:testng:7.1.0'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.springframework:spring-web:5.3.9'
+
+    // Use JUnit test framework for unit tests
+    testImplementation 'junit:junit:4.13.1'
+
+    implementation files("$projectDir/src/main/java/com/thoughtworks/fusheng/lib/runner.jar")
+//    implementation fileTree(dir: "$rootDir/runner/lib/build/libs/", include: 'lib.jar')
+}
+
+gradlePlugin {
+    // Define the plugin
+    plugins {
+        fusheng {
+            id = 'com.github.vincentx.fusheng'
+            displayName = 'SBE livingDoc plugin'
+            description = 'A plugin that helps you test your code with SBE by annotation and from website as living doc'
+            implementationClass = 'com.thoughtworks.fusheng.FushengPlugin'
+        }
+    }
+}
+
+
+pluginBundle {
+    website = 'https://github.com/vincentx/fusheng/tree/main/plugin'
+    vcsUrl = 'https://github.com/vincentx/fusheng/tree/main/plugin'
+    tags = ['livingDoc', 'test framework', 'SBE', 'fusheng']
+}
+
+
+sourceSets {
+    functionalTest {
+    }
+}
+
+gradlePlugin.testSourceSets(sourceSets.functionalTest)
+configurations.functionalTestImplementation.extendsFrom(configurations.testImplementation)
+
+tasks.register('functionalTest', Test) {
+    testClassesDirs = sourceSets.functionalTest.output.classesDirs
+    classpath = sourceSets.functionalTest.runtimeClasspath
+}
+
+//tasks.named('check') {
+//    // Run the functional tests as part of `check`
+//    dependsOn(tasks.functionalTest)
+//}
+
+publishing {
+    repositories {
+        maven {
+            url = "$buildDir/repo"
+        }
+    }
+}
+
+jar {
+    from {
+        configurations
+                .runtimeClasspath
+                .collect {
+                    if (it.name.equalsIgnoreCase("spring-web-5.3.9.jar")
+                            || it.name.equalsIgnoreCase("spring-core-5.3.9.jar")
+                            || it.name.equalsIgnoreCase("commons-lang3-3.12.0.jar")
+                            || it.name.equalsIgnoreCase("commons-io-1.3.2.jar")
+                            || it.name.equalsIgnoreCase("runner.jar")
+                    ) {
+                        zipTree(it)
+                    }
+                }
+    }
+    duplicatesStrategy(DuplicatesStrategy.WARN)
+}
+
+
+task printDir {
+    doLast {
+        println "the project dir is: ${projectDir}"
+        println "the root dir is: ${rootDir}"
+        println "the location: $rootDir/runner/lib/build/libs"
+        configurations.runtimeClasspath.collect {
+            println "the file is : $it.name"
+        }
+    }
+}
