@@ -1,3 +1,7 @@
+# Note
+for fusheng project maintenance, please reference: https://github.com/vincentx/fusheng,
+this project only crated in order to publish the plugin to gradle portal
+
 # Fusheng
 
 a plugin used together with [fusheng runner](../runner) to help you
