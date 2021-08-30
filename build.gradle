@@ -4,8 +4,8 @@ plugins {
     id 'com.gradle.plugin-publish' version '0.15.0'
 }
 
-group = 'com.github.eMe-404'
-version = '1.0.0'
+group = 'com.github.eMe-404.fusheng-plugin'
+version = '1.0.2'
 sourceCompatibility = '11'
 archivesBaseName = 'fusheng'
 
@@ -45,8 +45,8 @@ gradlePlugin {
 
 
 pluginBundle {
-    website = 'https://github.com/vincentx/fusheng/tree/main/plugin'
-    vcsUrl = 'https://github.com/vincentx/fusheng/tree/main/plugin'
+    website = 'https://github.com/eMe-404/fusheng-plugin'
+    vcsUrl = 'https://github.com/eMe-404/fusheng-plugin'
     tags = ['livingDoc', 'test framework', 'SBE', 'fusheng']
 }
 
@@ -68,14 +68,6 @@ tasks.register('functionalTest', Test) {
 //    // Run the functional tests as part of `check`
 //    dependsOn(tasks.functionalTest)
 //}
-
-publishing {
-    repositories {
-        maven {
-            url = "$buildDir/repo"
-        }
-    }
-}
 
 jar {
     from {

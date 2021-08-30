@@ -1,4 +1,4 @@
-package fusheng;
+package com.thoughtworks.fusheng;
 
 import com.sun.net.httpserver.HttpServer;
 import org.junit.After;

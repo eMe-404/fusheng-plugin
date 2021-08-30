@@ -6,6 +6,7 @@ import com.thoughtworks.fusheng.repository.ExperimentRepository;
 import com.thoughtworks.fusheng.repository.IndexRepository;
 import com.thoughtworks.fusheng.repository.ReportRepository;
 import com.thoughtworks.fusheng.repository.SpecRepository;
+import com.thoughtworks.fusheng.util.FushengLogger;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class FushengServer {
         httpServer.setExecutor(Executors.newFixedThreadPool(10));
         httpServer.start();
         setCurrentActiveServer(httpServer);
-        log.info("living doc started at port: {}" + port);
+        FushengLogger.info("living doc started at port: " + port, getClass());
         return httpServer;
     }
 

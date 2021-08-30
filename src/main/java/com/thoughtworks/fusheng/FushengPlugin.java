@@ -2,6 +2,7 @@ package com.thoughtworks.fusheng;
 
 import com.thoughtworks.fusheng.tasks.FushengClassPathTask;
 import com.thoughtworks.fusheng.tasks.FushengServerTask;
+import com.thoughtworks.fusheng.util.FushengLogger;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.file.FileCollection;
@@ -16,6 +17,7 @@ public class FushengPlugin implements Plugin<Project> {
         JavaPluginConvention javaPluginConvention = project
                 .getConvention()
                 .findPlugin(JavaPluginConvention.class);
+        FushengLogger.info("the plugin:" + javaPluginConvention, getClass());
 
         FileCollection fushengClasspath = Objects.requireNonNull(javaPluginConvention)
                 .getSourceSets()

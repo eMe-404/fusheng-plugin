@@ -22,9 +22,10 @@ public class FushengPluginFunctionalTest {
         Files.createDirectories(projectDir.toPath());
         writeString(new File(projectDir, "settings.gradle"), "");
         writeString(new File(projectDir, "build.gradle"),
-            "plugins {" +
-            "  id('fusheng')" +
-            "}");
+                "plugins {" +
+                        "  id('java-gradle-plugin')\n" +
+                        "  id('com.github.eMe-404.fusheng-plugin')" +
+                        "}");
 
         // Run the build
         GradleRunner runner = GradleRunner.create();

@@ -1,6 +1,7 @@
 package com.thoughtworks.fusheng.tasks;
 
 import com.thoughtworks.fusheng.FushengServer;
+import com.thoughtworks.fusheng.util.FushengLogger;
 import org.gradle.api.tasks.TaskAction;
 
 public class FushengServerTask extends FushengBaseTask {
@@ -19,10 +20,8 @@ public class FushengServerTask extends FushengBaseTask {
             while (true) {
 
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            server.stopServer();
+        } catch (Exception exp) {
+            FushengLogger.error("error encountered during start time", exp, getClass());
         }
     }
 
