@@ -13,8 +13,6 @@ public class FushengClassPathTask extends FushengBaseTask {
 
         Set<File> files = getFushengClassPath().getFiles();
         System.out.println("files in current classpath listed as below");
-        files.stream()
-                .filter(file -> !file.toString().contains("caches"))
-                .forEach(file -> System.out.println(file));
+        files.forEach(System.out::println);
     }
 }

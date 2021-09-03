@@ -2,6 +2,7 @@ package com.thoughtworks.fusheng.repository;
 
 import com.thoughtworks.fusheng.config.ServerConfig;
 import com.thoughtworks.fusheng.exception.FilesReadingFailedException;
+import java.util.Comparator;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class ReportRepository {
                             .normalize()
                             .toString()
                             .replace(REPORT_SUFFIX, ""))
+                    .sorted(Comparator.comparing(String::toString))
                     .collect(Collectors.toList());
 
         } catch (IOException e) {

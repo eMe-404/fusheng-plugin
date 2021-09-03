@@ -21,7 +21,6 @@ public class FushengBaseTask extends DefaultTask {
     public void loadClassPath() {
         final VisitableURLClassLoader gradleDefaultClassLoader = (VisitableURLClassLoader) getClass().getClassLoader();
         getFushengClassPath()
-                .filter(file -> !file.toString().contains("caches"))
                 .forEach(file -> {
                     try {
                         gradleDefaultClassLoader.addURL(file.toURI().toURL());
